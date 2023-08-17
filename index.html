@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOLVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/query.css" />
+    <script
+      defer
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://code.jquery.com/ui/1.8.17/jquery-ui.min.js"
+    ></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script defer src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script
+      defer
+      type="text/javascript"
+      src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
+    ></script>
+
+    <script defer src="js/script.js"></script>
+  </head>
+  <body onload="startsim();varinit();">
+
+
+
+    <div class="title-div-container">
+      <div class="title-div">
+        <div class="logo-div">
+          <a href="#"><img src="images/nitk.svg" alt="Logo" class="logo" /></a>
+        </div>
+        <h1>    Disc  Type  Flywheel </h1>
+
+        <canvas id="simscreen" height="50px" width="50px"></canvas>
+
+<div id="titleincanvas"></div>
+<div id="datatable1" class="datatable"></div>
+<div id="datatable2" class="datatable"></div>
+
+
+
+
+
+
+      </div>
+    </div>
+    <div class="container">
+      <div class="sidebar">
+        <ul class="tool-menu">
+          <li class="tool-list">
+            <a href="#simulation" class="tool-link" title="Simulation"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="icons"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8.25V18a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 18V8.25m-18 0V6a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6zM7.5 6h.008v.008H7.5V6zm2.25 0h.008v.008H9.75V6z"
+                />
+              </svg>
+              <span>Simulation</span></a
+            >
+          </li>
+          <li class="tool-list">
+            <a href="#variables" class="tool-link" title="Variables"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="icons"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.745 3A23.933 23.933 0 003 12c0 3.183.62 6.22 1.745 9M19.5 3c.967 2.78 1.5 5.817 1.5 9s-.533 6.22-1.5 9M8.25 8.885l1.444-.89a.75.75 0 011.105.402l2.402 7.206a.75.75 0 001.104.401l1.445-.889m-8.25.75l.213.09a1.687 1.687 0 002.062-.617l4.45-6.676a1.688 1.688 0 012.062-.618l.213.09"
+                />
+              </svg>
+              <span>Variables</span></a
+            >
+          </li>
+          <li class="tool-list">
+            <a href="#comments" class="tool-link" title="Comments"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="icons"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Results</span></a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="main">
+        <div class="main-section">
+          <div id="simulation" class="main__task-div">
+            <div class="title-control-div">
+              <h3 class="task-title">Simulation</h3>
+              <div id="controls" class="div__control">
+
+                
+                <img id="playpausebutton" onclick="simstate()" src="./images/blueplaydull.svg" alt="" />
+                <img id="graphbutton" onclick="plotgraph()" src="./images/graphbutton.svg" alt="" />
+              </div>
+            </div>
+            
+            <div class="canvas__div">
+            
+               
+              <div id="canvas-container">
+                <canvas id="canvas" class="canvas"></canvas>
+              </div>
+              <div class="graph-div display-hide">
+                <canvas id="graphscreen1" class="canvas"></canvas>
+              </div>
+              <div class="graph-div display-hide">
+                <canvas id="graphscreen2" class="canvas"></canvas>
+              </div>
+
+            
+            </div>
+
+            <div id="commentboxleft">
+              <p id='const1' onmouseover='showTitle(this);'>M = <span class="colorClass" id="v1" ></span></p>
+              <p id='const2' onmouseover='showTitle(this);'>n1 = <span class="colorClass" id="v2">17 revolutions</span></p>
+              <p id='const3' onmouseover='showTitle(this);'>r = <span class="colorClass" id="v3">0.01898m</span></p>
+              <p id='const4' onmouseover='showTitle(this);'>T<sub>f</sub> = <span class="colorClass" id="v4">9.31*10<sup>-3</sup>Nm</span></p></div>
+<!-- <div style="font-family:verdana; font-size:14px;" id="commentboxright"></div> -->
+                <!--<div id="textarea0" style = "width:250px;height:120px"></div>
+                <div id="textarea1" style = "width:240px;height:120px"></div>
+                <p id="speedText" style = "position:absolute;left:80px;top:165px;font:14px Comic Sans MS;color:goldenrod"></p>
+                -->
+          </div>
+          <div id="variables" class="main__task-div">
+            <div class="settings-sections">
+              <h3 class="task-title">Variables</h3>
+                <div class="variables-sections">
+
+                <!--<div class="var-div">
+                  <!--<label for="materials">Materials</label>
+                  <select
+                    class="var-select select-menu"
+                    name="R (cm)"
+                    id="rspinner"
+                  >
+                    <option class="select-menu" value="0">Steel</option>
+                    <option class="select-menu" value="1">Aluminium</option>
+                    <option class="select-menu" value="2">Bronze</option>
+                  </select>
+                </div>
+                <div class="var-div">
+                  <label for="sections">Sections</label>
+                  <select
+                    class="var-select select-menu"
+                    name="sections"
+                    id="sections"
+                  >
+                    <option class="select-menu" value="0">I section</option>
+                    <option class="select-menu" value="1">T section</option>
+                    <option class="select-menu" value="2">C section</option>
+                    <option class="select-menu" value="3">L section</option>
+                    <option class="select-menu" value="4">Square section</option>
+                    <option class="select-menu" value="5">
+                      Circular section
+                    </option>
+                    <option class="select-menu" value="6">Other section</option>
+                  </select>
+                </div>  -->
+
+
+
+                <div class="var-div">
+                  <label for="lengthSpinner">R (cm)</label>
+                  <input class="var-spinner" id="lengthSpinner" name="value" />
+                  <div class="var-slider" id="lengthSlider"></div>
+                </div>
+                <div class="var-div">
+                  <label for="dampSpinner">m (kg)</label>
+                  <input class="var-spinner" id="dampSpinner" name="value" />
+                  <div class="var-slider" id="dampSlider"></div>
+                </div>
+                <!--<div class="var-div">
+                  <label for="massSpinner">End Mass(kg)</label>
+                  <input class="var-spinner" id="massSpinner" name="value" />
+                  <div class="var-slider" id="massSlider"></div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+		  
+		  <div id="comments" class="main__task-div">
+            <h3 class="task-title">Controls</h3>
+              <div class="settings-sections">
+                <div class="control-sections">
+
+                 <button style="width:30%;">Add to table</button>
+			
+            <img id="playpausebutton" style="width:40px;" onclick="simstate()" src="./images/blueplaydull.svg" alt="" />
+                <img id="graphbutton" style="width:40px;" onclick="plotgraph()" src="./images/graphbutton.svg" alt="" />
+              
+         
+                </div>
+              </div>
+          </div>
+
+          <div id="comments" class="main__task-div">
+            <h3 class="task-title">Results</h3>
+              <div class="settings-sections">
+
+                <p id="calculation">Calculation</p>
+                
+
+                
+
+                <div class="control-sections">
+                  <p id="result">Result</p>
+                  
+                  <div class="variable" id="moiDiv1" style="display:none">Theoritical Moment of Inertia (kgm<sup>2</sup>) :
+                    &nbsp;&nbsp;&nbsp;<input type="number" id="momentofinertia1" autocomplete="off" min=0.1 max=1 step=0.010></br></br>
+                    Experimental Moment of Inertia (kgm<sup>2</sup>) :
+                    &nbsp;&nbsp;&nbsp;<input type="number" id="momentofinertia2" autocomplete="off" min=0.1 max=1 step=0.010></br></br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="err1" type="submit" onclick="perror();">
+                  </div>
+
+                </div>
+                </div>
+              </div>
+          </div>
+          <div class="main__task-div footer">
+            <p>Copyright © SOLVE The Virtual Lab @ NITK Surathkal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
